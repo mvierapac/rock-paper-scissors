@@ -1,6 +1,6 @@
 # Rock Paper Scissors App - PWA
 
-### **Rock Paper Scissors App**: [https://memory-card-app-gamma.vercel.app/](https://memory-card-app-gamma.vercel.app/)
+### **Rock Paper Scissors App**:
 
 Welcome to the Rock Paper Scissors App! Click the link above to start playing.
 
@@ -17,13 +17,13 @@ Welcome to Rock Paper Scissors App, a progressive web application (PWA) based on
 1. Clone the repository:
 
 ```sh
-https://github.com/anbreaker/memory-card-app.git
+https://github.com/mvierapac/rock-paper-scissors
 ```
 
 2. Navigate to the project directory:
 
 ```sh
-cd memory-card-app
+cd rock-paper-scissors
 ```
 
 3. Install the dependencies:
@@ -74,21 +74,12 @@ npm run build
 
 2. Serve the generated `dist` folder with a static server like `serve` or deploy it on platforms like gh-pages, Netlify, Render, Vercel...
 
-## Example Production Deployment
-
-The application is deployed using Vercel and accessible via the following URL:
-
-- **Web Application**: [Rock Paper Scissors App](https://memory-card-app-gamma.vercel.app/)
-
-Visit the link to see the live version of the application.
-
 ## Technical Characteristics
 
 - Framework: Lit
 - Design: Native CSS with reusable components.
 - PWA: Support for desktop and mobile device installation.
-- Performance: Lightweight and efficient design
 
 ## Contact
 
-Author: Marcos Viera Pacífico
+Author: Marcos Viera

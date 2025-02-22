@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, test } from 'vitest';
+import { beforeEach, describe, expect, vi, test } from 'vitest';
 
 // Views
-import { GameView } from '@views/game/game-view.js';
+import '@views/game/game-view.js';
 
 // Components
 import '@components/btn-action/btn-action.js';
@@ -11,69 +11,48 @@ describe('GameView', () => {
 
   beforeEach(() => {
     // Create the element
+    localStorage.setItem('playerName', 'TestPlayer');
     element = document.createElement('game-view');
     document.body.appendChild(element);
   });
 
-  test('should render the game view', () => {
+  test('should render the component', () => {
     expect(element).to.exist;
   });
 
   test('should initialize with default properties', () => {
-    expect(element.playerName).to.equal('');
-    expect(element.level).to.equal(DIFFICULTY_LEVEL[0]);
+    expect(element.playerName).toEqual('TestPlayer');
     expect(element.points).to.equal(0);
-    expect(element.isGameStarted).to.be.false;
-    setTimeout(() => {
-      expect(element.showMessage).to.be.false;
-    }, ONE_SECOND);
+    expect(element.playerChoice).to.equal('');
+    expect(element.computerChoice).to.equal('');
   });
 
-  test('should start the game when startGame is called', () => {
-    element.startGame();
-    expect(element.isGameStarted).to.be.true;
-    expect(element.showMessage).to.be.false;
+  test('should display the welcome message', () => {
+    const welcomeMessage = element.shadowRoot.querySelector('.welcome');
+    expect(welcomeMessage.textContent).to.include('Welcome');
   });
 
-  test('should handle card click correctly', () => {
-    element.numbers = [1, 2, 3];
-    element.visibleNumbers = true;
-    element.handleCardClick(0);
-    const card = element.shadowRoot.querySelectorAll('.card')[0];
-    expect(card.classList.contains('correct') || card.classList.contains('wrong')).to.be.true;
-  });
-
-  test('should change level correctly', () => {
-    const event = { target: { value: DIFFICULTY_LEVEL[1] } };
-    element.handleLevelChange(event);
-    expect(element.level).to.equal(DIFFICULTY_LEVEL[1]);
-  });
-
-  test('should show message when game is over', () => {
-    element.removeClassForHtmlElement(null, 'wrong');
-    setTimeout(() => {
-      expect(element.showMessage).to.be.true;
-    }, ONE_SECOND);
-  });
-
-  test('should render the correct number of cards', async () => {
-    element.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  test('should handle player choice', async () => {
+    const rockButton = element.shadowRoot.querySelector('game-choice-button[choice="rock"]');
+    rockButton.dispatchEvent(new Event('choice-button'));
     await element.updateComplete;
-    const cards = element.shadowRoot.querySelectorAll('.card');
-    expect(cards.length).to.equal(9);
+
+    expect(element.playerChoice).to.equal('rock');
+    expect(element.choiceMessage).to.include('You: rock');
   });
 
-  test('should display the correct player name', async () => {
-    element.playerName = 'Test Player';
-    await element.updateComplete;
-    const playerNameElement = element.shadowRoot.querySelector('h1');
-    expect(playerNameElement.textContent).to.include('Test Player');
+  test('should call exitGame when removed', () => {
+    const exitGameSpy = vi.spyOn(element, 'exitGame');
+    document.body.removeChild(element);
+
+    expect(exitGameSpy).toHaveBeenCalled();
   });
 
-  test('should update points correctly', async () => {
-    element.points = 10;
-    await element.updateComplete;
-    const pointsElement = element.shadowRoot.querySelector('p');
-    expect(pointsElement.textContent).to.include('10');
+  test('should update winnerMessage when determineWinner is called', () => {
+    element.playerChoice = 'rock';
+    element.computerChoice = 'scissors';
+    element.determineWinner();
+
+    expect(element.winnerMessage).to.include('win');
   });
 });
