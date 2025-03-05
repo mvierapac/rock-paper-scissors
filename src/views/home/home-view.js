@@ -48,7 +48,6 @@ class HomeView extends i18nMixin(LitElement) {
   render() {
     return html`
       <section>
-        <h1>${this.t('homeView.title')}</h1>
         <input-text id="playerNameInput" @input-text=${this.setPlayerName}></input-text>
         <btn-action text="${this.t('homeView.start')}" @btn-click=${this.handleStartGame}></btn-action>
       </section>

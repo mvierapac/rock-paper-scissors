@@ -4,6 +4,7 @@ import { Router } from '@vaadin/router';
 import { i18nMixin } from './mixins/i18n-mixin.js';
 
 import '@components/animated-wave-background/animated-wave-background.js';
+import '@components/app-banner/app-banner.js';
 
 import '@views/home/home-view.js';
 import '@views/game/game-view.js';
@@ -68,13 +69,9 @@ class AppRoot extends i18nMixin(LitElement) {
     return html`
       <div class="app">
         <nav>
-          <a href="/">
-            <img class="logo" src="../images/logo.png" alt="logo-game" />
-          </a>
+          <app-banner></app-banner>
         </nav>
         <div id="game"></div>
-
-        <animated-wave-background></animated-wave-background>
       </div>
     `;
   }
