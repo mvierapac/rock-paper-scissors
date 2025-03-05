@@ -3,6 +3,7 @@ import { css } from 'lit';
 export default css`
   :host,
   .header-app {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
