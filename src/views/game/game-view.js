@@ -92,14 +92,16 @@ class GameView extends i18nMixin(LitElement) {
   }
 
   determineWinner() {
-    if (this.playerChoice === this.computerChoice) {
-      this.winnerMessage = this.t('gameView.draw');
-    } else if (gameRules[this.playerChoice] === this.computerChoice) {
-      this.points += 1;
-      this.winnerMessage = this.t('gameView.win');
-    } else {
-      this.winnerMessage = this.t('gameView.lose');
-    }
+    setTimeout(() => {
+      if (this.playerChoice === this.computerChoice) {
+        this.winnerMessage = this.t('gameView.draw');
+      } else if (gameRules[this.playerChoice] === this.computerChoice) {
+        this.points += 1;
+        this.winnerMessage = this.t('gameView.win');
+      } else {
+        this.winnerMessage = this.t('gameView.lose');
+      }
+    }, 1); // for screen reader to read this msg after choice message
   }
 
   render() {
@@ -121,8 +123,12 @@ class GameView extends i18nMixin(LitElement) {
             @choice-button=${() => this.handlePlayerChoice('scissors')}
           ></game-choice-button>
         </div>
-        <p class="game-message ${this.choiceMessage ? 'game-message--visible' : ''}">${this.choiceMessage || ' '}</p>
-        <p class="game-message ${this.winnerMessage ? 'game-message--visible' : ''}">${this.winnerMessage || ' '}</p>
+        <p class="game-message ${this.choiceMessage ? 'game-message--visible' : ''}" aria-live="polite">
+          ${this.choiceMessage || ' '}
+        </p>
+        <p class="game-message ${this.winnerMessage ? 'game-message--visible' : ''}" aria-live="polite">
+          ${this.winnerMessage || ' '}
+        </p>
       </div>
     `;
   }

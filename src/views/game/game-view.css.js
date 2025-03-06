@@ -16,14 +16,12 @@ export default css`
   }
 
   .game-message {
-    visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     height: 24px;
   }
 
   .game-message--visible {
-    visibility: visible;
     opacity: 1;
   }
 `;

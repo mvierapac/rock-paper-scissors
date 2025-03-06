@@ -2,7 +2,7 @@ import { css } from 'lit';
 
 export default css`
   .btn-game {
-    background-color: #001391;
+    background-color: var(--clr-blue-500);
     border-radius: 0.5rem;
     border: none;
     color: white;
@@ -14,6 +14,11 @@ export default css`
   }
 
   .btn-game:hover {
-    background-color: #081670;
+    background-color: var(--clr-blue-600);
+  }
+
+  .btn-game:focus-visible {
+    outline: 2px solid var(--clr-orange-500);
+    outline-offset: 1px;
   }
 `;

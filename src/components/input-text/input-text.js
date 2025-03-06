@@ -11,6 +11,7 @@ class InputText extends LitElement {
     return {
       text: { type: String },
       errorMessage: { type: String },
+      errorId: { type: String },
     };
   }
 
@@ -18,6 +19,7 @@ class InputText extends LitElement {
     super();
     this.text = '';
     this.errorMessage = '';
+    this.errorId = `error-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
   }
 
   _handleInput(event) {
@@ -44,10 +46,18 @@ class InputText extends LitElement {
           class="input-text ${this.errorMessage ? 'error' : ''}"
           type="text"
           .value=${this.text}
+          aria-invalid=${this.errorMessage ? 'true' : 'false'}
+          aria-describedby="${this.errorId}"
           @input=${this._handleInput}
         />
       </label>
-      <p class="error-message ${this.errorMessage ? 'error-message--visible' : ''}">${this.errorMessage || ' '}</p>
+      <p
+        id="${this.errorId}"
+        class="error-message ${this.errorMessage ? 'error-message--visible' : ''}"
+        aria-live="assertive"
+      >
+        ${this.errorMessage || ''}
+      </p>
     `;
   }
 }

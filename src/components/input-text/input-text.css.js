@@ -18,29 +18,21 @@ export default css`
   }
 
   .input-text.error {
-    border-color: red;
-    background-color: #ffcdd2;
+    border-color: var(--clr-red-500);
+    background-color: var(--clr-red-300);
   }
 
   .error-message {
-    color: #990000;
+    color: var(--text-error);
     font-size: 14px;
     margin-top: 4px;
     margin-bottom: 0;
-    visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     height: 24px;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .error-message {
-      color: #f16f6f;
-    }
-  }
-
   .error-message--visible {
-    visibility: visible;
     opacity: 1;
   }
 `;

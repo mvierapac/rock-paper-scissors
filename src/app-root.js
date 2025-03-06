@@ -3,7 +3,6 @@ import { Router } from '@vaadin/router';
 
 import { i18nMixin } from './mixins/i18n-mixin.js';
 
-import '@components/animated-wave-background/animated-wave-background.js';
 import '@components/app-banner/app-banner.js';
 
 import '@views/home/home-view.js';

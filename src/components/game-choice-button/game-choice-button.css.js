@@ -5,7 +5,7 @@ export default css`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: var(--color-gray-200);
     border: 2px solid #000;
     border-radius: 8px;
     padding: 0.5rem;
@@ -29,7 +29,7 @@ export default css`
   }
 
   .choice-button:focus {
-    border-color: #ff6347;
+    border-color: var(--clr-orange-500);
     outline: none;
   }
 `;
