@@ -1,8 +1,10 @@
 import { LitElement, html } from 'lit';
 
 import stylesBtnAction from './game-choice-button.css.js';
+import { i18nMixin } from '../../mixins/i18n-mixin.js';
+import i18n from '../../i18n/i18n.js';
 
-class GameChoiceButton extends LitElement {
+class GameChoiceButton extends i18nMixin(LitElement) {
   static get styles() {
     return [stylesBtnAction];
   }
@@ -17,6 +19,7 @@ class GameChoiceButton extends LitElement {
     super();
 
     this.choice = '';
+    this.t = i18n.t;
   }
 
   get imageSrc() {
@@ -33,29 +36,22 @@ class GameChoiceButton extends LitElement {
   }
 
   get ariaLabel() {
-    switch (this.choice) {
-      case 'rock':
-        return 'Choose rock';
-      case 'paper':
-        return 'Choose paper';
-      case 'scissors':
-        return 'Choose scissors';
-      default:
-        return '';
-    }
+    const choices = {
+      rock: 'gameView.rock',
+      paper: 'gameView.paper',
+      scissors: 'gameView.scissors',
+    };
+
+    return this.choice in choices ? `${this.t('gameView.choose')} ${this.t(choices[this.choice])}` : '';
   }
 
   get altText() {
-    switch (this.choice) {
-      case 'rock':
-        return 'Rock';
-      case 'paper':
-        return 'Paper';
-      case 'scissors':
-        return 'Scissors';
-      default:
-        return '';
-    }
+    const ALT_TEXTS = {
+      rock: this.t('gameView.rock'),
+      paper: this.t('gameView.paper'),
+      scissors: this.t('gameView.scissors'),
+    };
+    return ALT_TEXTS[this.choice] || '';
   }
 
   _handleClick() {

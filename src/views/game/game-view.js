@@ -39,6 +39,14 @@ class GameView extends i18nMixin(LitElement) {
     this.t = i18n.t;
   }
 
+  get TRANSLATIONS() {
+    return {
+      rock: () => this.t('gameView.rock'),
+      paper: () => this.t('gameView.paper'),
+      scissors: () => this.t('gameView.scissors'),
+    };
+  }
+
   connectedCallback() {
     super.connectedCallback();
     const storedPlayers = JSON.parse(localStorage.getItem('players')) || {};
@@ -73,12 +81,19 @@ class GameView extends i18nMixin(LitElement) {
   handlePlayerChoice(choice) {
     this.winnerMessage = '';
     this.playerChoice = choice;
-    this.choiceMessage = `You: ${choice} - Bot:...`;
+    this.choiceMessage = this.t('gameView.choiceMessage', {
+      playerChoice: this.TRANSLATIONS[choice](),
+      botChoice: '...',
+    });
 
     setTimeout(() => {
       this.computerChoice = this.getComputerChoice();
       this.lastComputerChoice = this.computerChoice;
       this.choiceMessage = `You: ${this.playerChoice} - Bot: ${this.computerChoice}`;
+      this.choiceMessage = this.t('gameView.choiceMessage', {
+        playerChoice: this.TRANSLATIONS[this.playerChoice](),
+        botChoice: this.TRANSLATIONS[this.computerChoice](),
+      });
       this.determineWinner();
     }, 1000);
   }
@@ -101,7 +116,7 @@ class GameView extends i18nMixin(LitElement) {
       } else {
         this.winnerMessage = this.t('gameView.lose');
       }
-    }, 1); // for screen reader to read this msg after choice message
+    }, 1); // for screen reader to read the msg after choice message
   }
 
   render() {

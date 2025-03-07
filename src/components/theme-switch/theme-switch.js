@@ -53,7 +53,7 @@ class ThemeSwitch extends LitElement {
       <input
         type="checkbox"
         id="theme-toggle"
-        aria-label="Cambiar entre modo claro y oscuro"
+        aria-label="Activar modo oscuro"
         ?checked="${this.theme === 'dark'}"
         @change="${this.toggleTheme}"
       />
