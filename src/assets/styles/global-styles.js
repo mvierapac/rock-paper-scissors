@@ -110,7 +110,12 @@ export const globalStyles = css`
   }
 `;
 
-const sheet = new CSSStyleSheet();
-sheet.replaceSync(globalStyles.cssText);
+const sheet = typeof CSSStyleSheet !== 'undefined' ? new CSSStyleSheet() : null;
+
+if (sheet?.replaceSync) {
+  sheet.replaceSync(globalStyles.cssText);
+} else if (sheet?.replace) {
+  sheet.replace(globalStyles.cssText);
+}
 
 export const globalStyleSheet = sheet;

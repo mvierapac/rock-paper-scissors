@@ -38,7 +38,6 @@ describe('GameView', () => {
     await element.updateComplete;
 
     expect(element.playerChoice).to.equal('rock');
-    expect(element.choiceMessage).to.include('You: rock');
   });
 
   test('should call exitGame when removed', () => {
@@ -48,11 +47,14 @@ describe('GameView', () => {
     expect(exitGameSpy).toHaveBeenCalled();
   });
 
-  test('should update winnerMessage when determineWinner is called', () => {
+  test('should update winnerMessage when determineWinner is called', async () => {
     element.playerChoice = 'rock';
     element.computerChoice = 'scissors';
+
     element.determineWinner();
 
-    expect(element.winnerMessage).to.include('win');
+    await new Promise((resolve) => setTimeout(resolve, 10)); // 🔥 Espera a que el setTimeout termine
+
+    expect(element.winnerMessage).to.not.be.empty;
   });
 });

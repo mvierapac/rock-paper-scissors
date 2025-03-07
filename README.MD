@@ -1,4 +1,4 @@
-# Rock Paper Scissors App - PWA
+# Rock Paper Scissors App
 
 ### **Rock Paper Scissors App**:
 
@@ -6,7 +6,7 @@ Welcome to the Rock Paper Scissors App! Click the link above to start playing.
 
 ## Description
 
-Welcome to Rock Paper Scissors App, a progressive web application (PWA) based on the classic game “Rock Paper Scissors App”.
+Welcome to Rock Paper Scissors App, a web application based on the classic game “Rock Paper Scissors”.
 
 ## Features
 
@@ -78,7 +78,6 @@ npm run build
 
 - Framework: Lit
 - Design: Native CSS with reusable components.
-- PWA: Support for desktop and mobile device installation.
 
 ## Contact
 

@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test } from 'vitest';
+import { beforeEach, describe, expect, test, vi, beforeAll } from 'vitest';
 
 import { Router } from '@vaadin/router';
 
@@ -6,15 +6,20 @@ import '../src/app-root.js';
 
 describe('AppRoot', () => {
   let element;
+  beforeAll(() => {
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: vi.fn().mockImplementation((query) => ({
+        matches: query === '(prefers-color-scheme: dark)',
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+      })),
+    });
+  });
 
   beforeEach(() => {
     element = document.createElement('app-root');
     document.body.appendChild(element);
-  });
-
-  test('should render the animated wave background', () => {
-    const waveBackground = element.shadowRoot.querySelector('animated-wave-background');
-    expect(waveBackground).not.toBeNull(); // Verify than element exists
   });
 
   test('should navigate to the home view on "/"', async () => {

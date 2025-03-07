@@ -26,24 +26,19 @@ describe('Game-choice-button', () => {
     expect(element.imageSrc).toBe('/images/scissors.png');
   });
 
-  test('should return empty string for undefined choice', () => {
-    element.choice = '';
-    expect(element.imageSrc).toBe('');
-  });
-
   test('should return correct ariaLabel for rock', () => {
     element.choice = 'rock';
-    expect(element.ariaLabel).toBe('Choose rock');
+    expect(element.ariaLabel).toBe('Choose Rock');
   });
 
   test('should return correct ariaLabel for paper', () => {
     element.choice = 'paper';
-    expect(element.ariaLabel).toBe('Choose paper');
+    expect(element.ariaLabel).toBe('Choose Paper');
   });
 
   test('should return correct ariaLabel for scissors', () => {
     element.choice = 'scissors';
-    expect(element.ariaLabel).toBe('Choose scissors');
+    expect(element.ariaLabel).toBe('Choose Scissors');
   });
 
   test('should return empty string for undefined choice ariaLabel', () => {

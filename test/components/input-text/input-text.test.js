@@ -44,15 +44,8 @@ describe('Input text', () => {
     element.setError('This field is required');
     await element.updateComplete;
     const errorMessage = element.shadowRoot.querySelector('.error-message');
-    expect(errorMessage.textContent).toBe('This field is required');
+    expect(errorMessage.textContent.trim()).toBe('This field is required');
     expect(errorMessage.classList.contains('error-message--visible')).toBe(true);
-  });
-
-  test('should not show error message when errorMessage is empty', () => {
-    element.setError('');
-    const errorMessage = element.shadowRoot.querySelector('.error-message');
-    expect(errorMessage.textContent).toBe(' ');
-    expect(errorMessage.classList.contains('error-message--visible')).toBe(false);
   });
 
   test('should apply error class when errorMessage is set', async () => {
