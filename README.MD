@@ -6,11 +6,23 @@ Welcome to the Rock Paper Scissors App! Click the link above to start playing.
 
 ## Description
 
-Welcome to Rock Paper Scissors App, a web application based on the classic game “Rock Paper Scissors”.
+A modern, accessible, and engaging Rock-Paper-Scissors game with full **screen reader support** and **keyboard navigation**. Try playing with your eyes closed!
 
 ## Features
 
-- Todo
+- Multilingual support
+- Accessibility: This game has been designed with accessibility in mind. You can fully enjoy it using only your keyboard, while receiving all necessary feedback through a screen reader.
+
+Challenge: Try playing with your eyes closed and a screen reader activated. Can you win without seeing the screen?
+
+To activate a screen reader on your device:
+
+Windows: NVDA (Free) or Narrator (Win + Ctrl + Enter)
+Mac: VoiceOver (Cmd + F5)
+Linux: Orca
+Android/iOS: TalkBack / VoiceOver
+
+Take on the challenge and experience how accessible the game is!
 
 ## Installation
 
@@ -77,7 +89,7 @@ npm run build
 ## Technical Characteristics
 
 - Framework: Lit
-- Design: Native CSS with reusable components.
+- Design: Native CSS.
 
 ## Contact
 
