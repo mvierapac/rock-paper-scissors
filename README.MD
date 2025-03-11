@@ -2,11 +2,11 @@
 
 ### **Rock Paper Scissors App**:
 
-Welcome to the Rock Paper Scissors App! Click the link above to start playing.
+Welcome to the Rock Paper Scissors App!
 
 ## Description
 
-A modern, accessible, and engaging Rock-Paper-Scissors game with full **screen reader support** and **keyboard navigation**. Try playing with your eyes closed!
+An, accessible Rock-Paper-Scissors game with full **screen reader support** and **keyboard navigation**. Try playing with your eyes closed!
 
 ## Features
 
@@ -22,7 +22,7 @@ Mac: VoiceOver (Cmd + F5)
 Linux: Orca
 Android/iOS: TalkBack / VoiceOver
 
-Take on the challenge and experience how accessible the game is!
+Take on the challenge!
 
 ## Installation
 
